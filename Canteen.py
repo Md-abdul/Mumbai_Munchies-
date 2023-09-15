@@ -1,3 +1,5 @@
+
+# add snacks function which i want to add in canteen  
 class Snack:
     def __init__(self, snack_id, name, price, available):
         self.snack_id = snack_id
@@ -5,6 +7,8 @@ class Snack:
         self.price = price
         self.available = available
 
+
+# in invertory class all function call here like add delete update the new_availability
 class Inventory:
     def __init__(self):
         self.inventory = {}
@@ -20,6 +24,11 @@ class Inventory:
     def update_snack_availability(self, snack_id, new_availability):
         if snack_id in self.inventory:
             self.inventory[snack_id].available = new_availability
+
+    def show_snacks(self):
+        print("Snacks in Inventory:")
+        for snack_id, snack in self.inventory.items():
+            print(f"Snack ID: {snack_id}, Name: {snack.name}, Price: {snack.price}, Available: {snack.available}")
 
 class SalesRecord:
     def __init__(self):
@@ -46,7 +55,8 @@ while True:
     print("2. Remove a snack")
     print("3. Update snack availability")
     print("4. Record a sale")
-    print("5. Exit")
+    print("5. Show snacks")
+    print("6. Exit")
 
     choice = input("Enter your choice: ")
 
@@ -75,12 +85,10 @@ while True:
         print("Sale recorded.")
 
     elif choice == '5':
-        break
+        inventory.show_snacks()
 
-# Display the current inventory
-print("Current Inventory:")
-for snack_id, snack in inventory.inventory.items():
-    print(f"Snack ID: {snack_id}, Name: {snack.name}, Price: {snack.price}, Available: {snack.available}")
+    elif choice == '6':
+        break
 
 # Display the sales record
 print("Sales Record:")
